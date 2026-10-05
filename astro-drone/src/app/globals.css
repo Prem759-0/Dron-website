@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-astro-base: #030303;
+  --color-astro-surface: #0a0a0a;
+  --color-astro-surface-light: #151515;
+  --color-astro-orange: #ff5a00;
+  --color-astro-cyan: #00e5ff;
+  --color-astro-text: #f5f5f5;
+  --color-astro-muted: #888888;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Base resets */
+html, body {
+  background-color: var(--color-astro-base);
+  color: var(--color-astro-text);
+  font-family: var(--font-sans);
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+/* Custom cinematic scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-astro-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-astro-surface-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-astro-orange);
+}
+
+/* Gradients */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #ffffff, #888888);
+}
+
+.text-gradient-accent {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, var(--color-astro-orange), var(--color-astro-cyan));
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Cinematic film grain overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glowing Hover Card */
+.glow-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,90,0,0.5), rgba(0,229,255,0.2), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.glow-card:hover {
+  transform: translateY(-8px);
+}
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+/* Ambient glow for premium elements */
+.ambient-glow {
+  position: relative;
+}
+.ambient-glow::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--color-astro-orange), var(--color-astro-cyan));
+  filter: blur(20px);
+  opacity: 0.15;
+  z-index: -1;
+  border-radius: inherit;
+  transition: opacity 0.4s ease;
+}
+.ambient-glow:hover::after {
+  opacity: 0.3;
+}
