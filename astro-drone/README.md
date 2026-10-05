@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚁 Astro Drone - Cinematic Product Website
 
-## Getting Started
+Welcome to the **Astro Drone** repository! This is a premium, hyper-realistic, scroll-driven single-page application (SPA) built to showcase the world's most advanced consumer drone.
 
-First, run the development server:
+## 🎨 Design & Colors (Aesthetics)
+The visual identity of this project is deeply inspired by the physical drone itself, utilizing a cinematic, high-contrast dark theme:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **Matte Titanium-Gray (`#030303` to `#151515`)**: The core background and surface colors, providing a sleek, professional, and cinematic canvas.
+*   **Safety-Orange (`#ff5a00`)**: The primary accent color used for critical highlights, the most popular pricing tier, and primary Call-to-Action (CTA) buttons. Matches the drone's physical accents.
+*   **Cyan (`#00e5ff`)**: The secondary accent color used for icons, checkmarks, and technological feature highlights (like the front light ring of the drone).
+*   **Cinematic Effects**: The UI heavily utilizes **glassmorphism** (frosted glass panels), **animated film grain** overlays, and **radial vignettes** to ensure text readability over bright footage.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌊 User Flows (Scroll & Chart Flows)
+The website is designed as a continuous, story-driven scroll experience using GSAP ScrollTrigger and a custom `<canvas>` rendering engine.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Hero Initiation Flow (Frames 1–120):**
+    *   **Preloader:** A cinematic loading screen ensures all heavy image assets are cached before the user begins scrolling.
+    *   **Scroll Sequence:** As the user scrolls down, the background canvas scrubs forward through the drone's flight (forest to waterfall). Scrolling up rewinds the footage.
+    *   **Milestone Overlays:** Key features ("Omnidirectional Obstacle Avoidance", "IP55 Weather Sealed") fade and slide into view at precise scroll percentages.
+2.  **Feature Deep-Dive Flow:**
+    *   **Spec Strip:** Count-up animations trigger as the user reaches the core specifications.
+    *   **Flight Modes:** Interactive, glowing hover cards explain the neural-network-powered flight modes.
+    *   **Portability:** A split-screen layout demonstrating the foldable design.
+3.  **Secondary Action Flow (Frames 121–240):**
+    *   **Lazy-Loaded Sequence:** A second scroll sequence scrubs through a canyon run and cliff climb.
+    *   **Horizon Breakout:** Ends with the drone hovering above the clouds at sunrise, transitioning into the final conversion sections.
+4.  **Conversion Flow:**
+    *   Generational comparison table.
+    *   Interactive pricing tiers with an "Ambient Glow" highlighting the premium Cinematic Combo.
+    *   Accordion-style FAQ and standard footer.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technology Stack
+*   **Framework:** [Next.js 15](https://nextjs.org/) (App Router, Static Export enabled)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Animations:** [GSAP](https://gsap.com/) & ScrollTrigger
+*   **Icons:** [Lucide React](https://lucide.dev/)
 
-## Learn More
+## 🚀 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+To run this project locally on your machine:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to experience the site.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Deployment (Vercel)
+This project is configured for seamless deployment on Vercel. 
+*   **Static Export:** The project is configured with `output: "export"` in `next.config.ts`. Running `npm run build` will generate an `out` folder containing pure HTML/CSS/JS files that can be hosted anywhere.
+*   **Vercel CLI:** You can instantly deploy by running `npx vercel` in your terminal.
